@@ -39,3 +39,47 @@ cacheSolve <- function(x, ...) {
   x$setInverse(inv)
   inv
 }
+
+
+> source("C:/Users/trish/OneDrive - Mapúa University/Desktop/RStudio/cachematrix.R")
+> pmatrix<-makeCacheMatrix(matrix(1:4,2,2))
+> pmatrix$get()
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+> pmatrix$getInverse()
+NULL
+> cacheSolve(pmatrix)
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+> cacheSolve(pmatrix)
+getting cached data
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+> pmatrix$getInverse()
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+> 
+> pmatrix$set(matrix(c(2,2,1,4),2,2))
+> pmatrix$get()
+     [,1] [,2]
+[1,]    2    1
+[2,]    2    4
+> pmatrix$getInverse()
+NULL
+> cacheSolve(pmatrix)
+           [,1]       [,2]
+[1,]  0.6666667 -0.1666667
+[2,] -0.3333333  0.3333333
+> cacheSolve(pmatrix)
+getting cached data
+           [,1]       [,2]
+[1,]  0.6666667 -0.1666667
+[2,] -0.3333333  0.3333333
+> pmatrix$getInverse()
+           [,1]       [,2]
+[1,]  0.6666667 -0.1666667
+[2,] -0.3333333  0.3333333 
